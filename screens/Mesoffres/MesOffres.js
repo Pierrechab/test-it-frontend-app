@@ -38,7 +38,7 @@ export default class MesOffres extends React.Component {
   getDatas = () => {
     axios
       .get(
-        "http://localhost:3000/" +
+        "http://192.168.1.100:3000/" +
           this.state.OfferType +
           "/" +
           this.state.user_id
