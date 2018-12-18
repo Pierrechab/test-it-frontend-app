@@ -17,7 +17,7 @@ export default class ForgotPassword extends React.Component {
 		const { navigate } = this.props.navigation;
 
 		axios
-			.post("http://192.168.1.100:3000/log_in/forgot_password", {
+			.post("http://localhost:3000/log_in/forgot_password", {
 				email: this.state.email
 			})
 			.then(response => {

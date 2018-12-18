@@ -5,7 +5,8 @@ import {
 	Image,
 	Text,
 	TouchableOpacity,
-	TextInput
+	TextInput,
+	Platform
 } from "react-native";
 import Icono from "react-native-vector-icons/FontAwesome";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
@@ -31,7 +32,7 @@ export default class SignUpScreen extends React.Component {
 		const { navigate } = this.props.navigation;
 
 		axios
-			.post("http://192.168.1.100:3000/sign_up", {
+			.post("http://localhost:3000/sign_up", {
 				email: this.state.email,
 				password: this.state.password
 			})
@@ -49,7 +50,7 @@ export default class SignUpScreen extends React.Component {
 
 	// renderIconEmail = () => {
 	//   axios
-	//     .post("http://192.168.1.100:3000/freeemail", {
+	//     .post("http://localhost:3000/freeemail", {
 	//       hasCheckedEmail: this.state.hasCheckedEmail
 	//     })
 	//     .then(response => {
@@ -61,6 +62,8 @@ export default class SignUpScreen extends React.Component {
 	render() {
 		return (
 			<KeyboardAwareScrollView
+				enabledOnAndroid={true}
+				// enableAutoAutomaticScroll={Platform.OS === "ios"}
 				style={{
 					display: "flex",
 					// backgroundColor: "#FF5054"
