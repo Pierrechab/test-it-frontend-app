@@ -1,12 +1,9 @@
 import React from "react";
 import {
-	Alert,
-	Button,
 	View,
 	Text,
 	ScrollView,
 	TouchableOpacity,
-	Image,
 	AsyncStorage
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
@@ -31,7 +28,6 @@ export default class ReglagesScreen extends React.Component {
 			this.props.navigation.navigate("Auth");
 		});
 	};
-
 	getContact = () => {
 		console.log("youpi", this.props);
 		const { navigate } = this.props.navigation;
@@ -42,6 +38,18 @@ export default class ReglagesScreen extends React.Component {
 		const { navigate } = this.props.navigation;
 		navigate("BankAccount");
 	};
+	getNewPassword = () => {
+		const { navigate } = this.props.navigation;
+		navigate("NewPassword");
+	};
+	getCertification = () => {
+		const { navigate } = this.props.navigation;
+		navigate("Certification");
+	};
+	getFAQ = () => {
+		const { navigate } = this.props.navigation;
+		navigate("FAQ");
+	};
 
 	render() {
 		const { navigate } = this.props.navigation;
@@ -50,9 +58,7 @@ export default class ReglagesScreen extends React.Component {
 				<View
 					style={{
 						flex: 1,
-
 						alignItems: "center",
-
 						marginTop: 50,
 						justifyContent: "flex-start"
 					}}
@@ -68,7 +74,6 @@ export default class ReglagesScreen extends React.Component {
 							shadowColor: "#000000",
 							shadowOffset: { width: 5, height: 5 },
 							shadowOpacity: 0.4,
-
 							backgroundColor: "white"
 						}}
 						onPress={this.getBank}
@@ -93,10 +98,9 @@ export default class ReglagesScreen extends React.Component {
 							shadowColor: "#000000",
 							shadowOffset: { width: 5, height: 5 },
 							shadowOpacity: 0.4,
-
 							backgroundColor: "white"
 						}}
-						onPress={this.logOut}
+						onPress={this.getNewPassword}
 					>
 						<View
 							style={{ marginLeft: 20, marginRight: 40, paddingVertical: 15 }}
@@ -118,10 +122,9 @@ export default class ReglagesScreen extends React.Component {
 							shadowColor: "#000000",
 							shadowOffset: { width: 5, height: 5 },
 							shadowOpacity: 0.4,
-
 							backgroundColor: "white"
 						}}
-						onPress={this.logOut}
+						onPress={this.getFAQ}
 					>
 						<View
 							style={{ marginLeft: 20, marginRight: 40, paddingVertical: 15 }}
@@ -143,7 +146,6 @@ export default class ReglagesScreen extends React.Component {
 							shadowColor: "#000000",
 							shadowOffset: { width: 5, height: 5 },
 							shadowOpacity: 0.4,
-
 							backgroundColor: "white"
 						}}
 						onPress={this.getContact}
@@ -168,10 +170,9 @@ export default class ReglagesScreen extends React.Component {
 							shadowColor: "#000000",
 							shadowOffset: { width: 5, height: 5 },
 							shadowOpacity: 0.4,
-
 							backgroundColor: "white"
 						}}
-						onPress={this.logOut}
+						onPress={this.getCertification}
 					>
 						<View
 							style={{ marginLeft: 20, marginRight: 40, paddingVertical: 15 }}
@@ -193,7 +194,6 @@ export default class ReglagesScreen extends React.Component {
 							shadowColor: "#000000",
 							shadowOffset: { width: 5, height: 5 },
 							shadowOpacity: 0.4,
-
 							backgroundColor: "white"
 						}}
 						onPress={this.logOut}

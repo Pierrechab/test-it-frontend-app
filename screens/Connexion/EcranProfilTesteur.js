@@ -139,7 +139,7 @@ export default class StatingProfileScreen extends React.Component {
 		const { navigate } = this.props.navigation;
 		const { firstName, lastName, sex, birthDate } = this.state;
 		axios
-			.post("http://192.168.1.100:3000/user/update", {
+			.post("http://localhost:3000/user/update", {
 				_id: this.props.navigation.state.params,
 				firstName,
 				lastName,
@@ -168,6 +168,7 @@ export default class StatingProfileScreen extends React.Component {
 
 		return (
 			<KeyboardAwareScrollView
+				enabledOnAndroid
 				style={{
 					display: "flex",
 					// backgroundColor: "#FF5054"

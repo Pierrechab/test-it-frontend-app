@@ -9,23 +9,30 @@ import {
 	TextInput,
 	View,
 	ScrollView,
-	Button
+	Button,
+	Platform
 } from "react-native";
 import { Permissions, Notifications } from "expo";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+
+import BackGroundImage from "../../components/BackGroundImage";
 
 export default class LogIn extends React.Component {
 	static navigationOptions = {
 		title: "Connexion",
 		headerStyle: {
-			backgroundColor: "rgb(239,239,244)"
+			backgroundColor: "#041A39"
+		},
+		headerTintColor: "#ffffff",
+		headerTitleStyle: {
+			fontWeight: "bold"
 		}
 		//header: null //pour enlever le header
 	};
 
 	state = {
-		email: "Pd@msn.com",
-		password: "pd",
+		email: "jo@msn.com",
+		password: "jo",
 		isAuthenticated: false,
 		tokenNotifications: ""
 	};
@@ -70,7 +77,7 @@ export default class LogIn extends React.Component {
 	handleSubmit = () => {
 		const { navigate } = this.props.navigation;
 		axios
-			.post("http://192.168.1.100:3000/log_in", {
+			.post("http://localhost:3000/log_in", {
 				tokenNotifications: this.state.tokenNotifications,
 				email: this.state.email,
 				password: this.state.password
@@ -100,95 +107,99 @@ export default class LogIn extends React.Component {
 
 	render() {
 		return (
-			<KeyboardAwareScrollView
-				style={{
-					display: "flex",
-					// backgroundColor: "#FF5054"
-					// justifyContent: "center",
-					// alignItems: "center",
-					flex: 1
-				}}
-				extraScrollHeight={80}
-				resetScrollToCoords={{ x: 0, y: 0 }}
-				contentContainerStyle={{
-					// backgroundColor: "#FF5054",
-					justifyContent: "center",
-					alignItems: "center",
-					flex: 1
-				}}
-				scrollEnabled
-			>
-				<Image
+			<BackGroundImage style={{ flex: 1, width: "100%" }}>
+				<KeyboardAwareScrollView
+					enabledOnAndroid={true}
+					// enableAutoAutomaticScroll={Platform.OS === "ios"}
 					style={{
-						height: 160,
-						width: 160,
-						alignSelf: "center",
-						marginTop: 30,
-						marginRight: 30
+						display: "flex",
+						// backgroundColor: "#FF5054"
+						// justifyContent: "center",
+						// alignItems: "center",
+						flex: 1
 					}}
-					source={require("../../assets/images/testit-logo.png")}
-				/>
-				<TextInput
-					style={{
-						fontSize: 20,
-						color: "black",
-						height: 50,
-						width: 200,
-						marginTop: 30,
-						borderBottomWidth: 1,
-						borderBottomColor: "rgb(103,114,129)",
-						paddingBottom: 5
-					}}
-					placeholder="email" //arno@airbnb-api.com
-					placeholderTextColor="lightgrey"
-					type="email-address"
-					autoCapitalize="none"
-					name="email"
-					value={this.state.email}
-					onChangeText={email => this.setState({ email })}
-				/>
-				<TextInput
-					style={{
-						fontSize: 20,
-						color: "black",
-						height: 50,
-						width: 200,
-						marginTop: 30,
-						borderBottomWidth: 1,
-						borderBottomColor: "rgb(103,114,129)",
-						paddingBottom: 5
-					}}
-					placeholder="........"
-					placeholderTextColor="lightgrey"
-					secureTextEntry
-					type="text"
-					name="password"
-					value={this.state.password}
-					onChangeText={text => this.setState({ password: text })}
-				/>
-				<TouchableOpacity
-					style={{
-						height: 40,
-						width: 190,
-						borderRadius: 20,
-						backgroundColor: "white",
-						alignItems: "center",
+					extraScrollHeight={80}
+					resetScrollToCoords={{ x: 0, y: 0 }}
+					contentContainerStyle={{
+						// backgroundColor: "#FF5054",
 						justifyContent: "center",
-						marginTop: 50,
-						alignSelf: "center"
+						alignItems: "center",
+						flex: 1
 					}}
-					onPress={this.handleSubmit}
+					scrollEnabled
 				>
-					<Text>SE CONNECTER</Text>
-				</TouchableOpacity>
-				<View style={{ marginTop: 15 }}>
-					<Button
-						title="Mot de passe oublié ?"
-						color="#841584"
-						onPress={this.forgetSubmit}
+					<Image
+						style={{
+							height: 160,
+							width: 160,
+							alignSelf: "center",
+							marginTop: 30,
+							marginRight: 30
+						}}
+						source={require("../../assets/images/testit-logo.png")}
 					/>
-				</View>
-			</KeyboardAwareScrollView>
+					<TextInput
+						style={{
+							fontSize: 20,
+							color: "black",
+							height: 50,
+							width: 200,
+							marginTop: 30,
+							borderBottomWidth: 1,
+							borderBottomColor: "rgb(103,114,129)",
+							paddingBottom: 5
+						}}
+						placeholder="email" //arno@airbnb-api.com
+						placeholderTextColor="lightgrey"
+						type="email-address"
+						autoCapitalize="none"
+						name="email"
+						value={this.state.email}
+						onChangeText={email => this.setState({ email })}
+					/>
+					<TextInput
+						style={{
+							fontSize: 20,
+							color: "black",
+							height: 50,
+							width: 200,
+							marginTop: 30,
+							borderBottomWidth: 1,
+							borderBottomColor: "rgb(103,114,129)",
+							paddingBottom: 5
+						}}
+						placeholder="........"
+						placeholderTextColor="lightgrey"
+						secureTextEntry
+						type="text"
+						name="password"
+						value={this.state.password}
+						onChangeText={text => this.setState({ password: text })}
+					/>
+					<TouchableOpacity
+						style={{
+							height: 40,
+							width: 190,
+							borderRadius: 20,
+							backgroundColor: "white",
+							alignItems: "center",
+							justifyContent: "center",
+							marginTop: 50,
+							alignSelf: "center"
+						}}
+						onPress={this.handleSubmit}
+					>
+						<Text>SE CONNECTER</Text>
+					</TouchableOpacity>
+					<View style={{ marginTop: 15 }}>
+						<Button
+							title="Mot de passe oublié ?"
+							color="#841584"
+							onPress={this.forgetSubmit}
+						/>
+					</View>
+				</KeyboardAwareScrollView>
+			</BackGroundImage>
 		);
 	}
 }

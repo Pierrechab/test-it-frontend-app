@@ -14,6 +14,9 @@ import ReglagesScreen from "../screens/Reglages/Reglages";
 import BankAccountScreen from "../screens/Reglages/Bank";
 import ContactUsScreen from "../screens/Reglages/Contact";
 import IbanFormScreen from "../screens/Reglages/IbanForm";
+import Certification from "../screens/Reglages/Certification";
+import FAQ from "../screens/Reglages/FAQ";
+import NewPassword from "../screens/Reglages/NewPassword";
 import IconEntypo from "react-native-vector-icons/Entypo";
 import Colors from "../constants/Colors";
 
@@ -86,7 +89,10 @@ const SettingsStack = createStackNavigator({
 	Reglages: ReglagesScreen,
 	BankAccount: BankAccountScreen,
 	ContactUs: ContactUsScreen,
-	IbanForm: IbanFormScreen
+	IbanForm: IbanFormScreen,
+	FAQ: FAQ,
+	NewPassword: NewPassword,
+	Certification: Certification
 });
 
 SettingsStack.navigationOptions = {
@@ -99,7 +105,7 @@ SettingsStack.navigationOptions = {
 		return (
 			<IconEntypo
 				name="dots-three-horizontal"
-				size={26}
+				fontSize={26}
 				style={{ marginBottom: -15 }}
 				color={focused ? Colors.tabIconSelected : Colors.tabIconDefault}
 			/>

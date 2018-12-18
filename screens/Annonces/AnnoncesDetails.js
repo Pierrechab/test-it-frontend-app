@@ -45,7 +45,7 @@ class Offer extends React.Component {
 	};
 	register = () => {
 		axios
-			.post("http://192.168.1.100:3000/addRemoveTester", {
+			.post("http://localhost:3000/addRemoveTester", {
 				Offer_id: this.props.navigation.state.params.id,
 				User_id: this.state.user_id
 			})
@@ -64,7 +64,7 @@ class Offer extends React.Component {
 			return AlertIOS.alert("", "Vous vous êtes déjà inscrit à cette offre.");
 		}
 		axios
-			.post("http://192.168.1.100:3000/addToFavorite", {
+			.post("http://localhost:3000/addToFavorite", {
 				Offer_id: this.props.navigation.state.params.id,
 				User_id: this.state.user_id
 			})
@@ -80,7 +80,7 @@ class Offer extends React.Component {
 	};
 	getToHistory = () => {
 		axios
-			.post("http://192.168.1.100:3000/participation", {
+			.post("http://localhost:3000/participation", {
 				Offer_id: this.props.navigation.state.params.id,
 				User_id: this.state.user_id
 			})
@@ -417,7 +417,7 @@ class Offer extends React.Component {
 					// Charger l'annonce et vérifier l'inscription de l'user
 					axios
 						.get(
-							"http://192.168.1.100:3000/offer/" +
+							"http://localhost:3000/offer/" +
 								this.props.navigation.state.params.id
 						)
 						.then(response => {
@@ -461,7 +461,7 @@ class Offer extends React.Component {
 					// Vérifier les favoris
 					axios
 						.get(
-							"http://192.168.1.100:3000/checkfavorites/" + this.state.user_id
+							"http://localhost:3000/checkfavorites/" + this.state.user_id
 						)
 						.then(response => {
 							this.setState(
@@ -483,7 +483,7 @@ class Offer extends React.Component {
 						});
 					// Vérifier l'historique
 					axios
-						.get("http://192.168.1.100:3000/checkhistory/" + this.state.user_id)
+						.get("http://localhost:3000/checkhistory/" + this.state.user_id)
 						.then(response => {
 							this.setState(
 								{

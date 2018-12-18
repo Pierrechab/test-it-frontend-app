@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import {
 	Alert,
-	Button,
 	View,
 	Text,
 	StyleSheet,
@@ -69,7 +68,7 @@ export default class FirstMainScreen extends React.Component {
 				const { navigate } = this.props.navigation;
 
 				axios
-					.post("http://192.168.1.100:3000/facebook/log_in", {
+					.post("http://localhost:3000/facebook/log_in", {
 						email: jsonResponse.email,
 						firstName: jsonResponse.name,
 						lastName: jsonResponse.name,
@@ -107,96 +106,92 @@ export default class FirstMainScreen extends React.Component {
 	render() {
 		const { navigate } = this.props.navigation;
 		return (
-			<ScrollView>
-				<View>
-					<BackGroundImage style={{ flex: 1, width: "100%" }}>
-						<Image
-							style={{
-								height: 160,
-								width: 160,
-								alignSelf: "center",
-								marginTop: 100,
-								marginRight: 30
-							}}
-							source={require("../../assets/images/testit-logo.png")}
-						/>
-						<Text
-							style={{
-								textAlign: "center",
-								marginTop: 10,
-								fontSize: 30,
-								padding: 20,
-								color: "#444444",
-								shadowOffset: { width: 2, height: 2 },
-								shadowOpacity: 0.6
-							}}
-						>
-							TEST IT
-						</Text>
-						<Text
-							style={{
-								fontSize: 20,
-								textAlign: "center",
-								fontWeight: "600",
-								padding: 10
-							}}
-						>
-							Gagne de l'argent en donnant ton avis
-						</Text>
-						<TouchableOpacity
-							style={{
-								...styles.conexion,
-								flexDirection: "row",
-								marginTop: 80,
-								borderColor: "#ddd",
-								shadowColor: "#000000",
-								shadowOffset: { width: 5, height: 5 },
-								shadowOpacity: 0.4
-							}}
-							onPress={() => this.logInFB()}
-						>
-							<Icon
-								name="facebook-square"
-								size={30}
-								color="white"
-								style={{ paddingRight: 15 }}
-							/>
-							<View>
-								<Text style={styles.text}>SE CONNECTER AVEC </Text>
-								<Text style={styles.text}>FACEBOOK </Text>
-							</View>
-						</TouchableOpacity>
-						<TouchableOpacity
-							onPress={() => navigate("LogIn", { name: "Connexion" })}
-							style={{
-								...styles.conexion,
-								backgroundColor: "white",
-								borderColor: "#ddd",
-								shadowColor: "#000000",
-								shadowOffset: { width: 5, height: 5 },
-								shadowOpacity: 0.4
-							}}
-						>
-							<Text style={styles.text}>SE CONNECTER VIA</Text>
-							<Text style={styles.text}>EMAIL</Text>
-						</TouchableOpacity>
-						<TouchableOpacity
-							onPress={() => navigate("SignUp", { name: "Nouveau compte" })}
-							style={{
-								...styles.conexion,
-								backgroundColor: "white",
-								height: 40,
-								borderColor: "#ddd",
-								shadowColor: "#000000",
-								shadowOffset: { width: 5, height: 5 },
-								shadowOpacity: 0.4
-							}}
-						>
-							<Text style={styles.text}>CRÉER UN COMPTE</Text>
-						</TouchableOpacity>
-					</BackGroundImage>
-				</View>
-			</ScrollView>
+			<BackGroundImage style={{ flex: 1, width: "100%" }}>
+				<Image
+					style={{
+						height: 160,
+						width: 160,
+						alignSelf: "center",
+						marginTop: 100,
+						marginRight: 30
+					}}
+					source={require("../../assets/images/testit-logo.png")}
+				/>
+				<Text
+					style={{
+						textAlign: "center",
+						marginTop: 10,
+						fontSize: 30,
+						padding: 20,
+						color: "#444444",
+						shadowOffset: { width: 2, height: 2 },
+						shadowOpacity: 0.6
+					}}
+				>
+					TEST IT
+				</Text>
+				<Text
+					style={{
+						fontSize: 20,
+						textAlign: "center",
+						fontWeight: "600",
+						padding: 10
+					}}
+				>
+					Gagne de l'argent en donnant ton avis
+				</Text>
+				<TouchableOpacity
+					style={{
+						...styles.conexion,
+						flexDirection: "row",
+						marginTop: 80,
+						borderColor: "#ddd",
+						shadowColor: "#000000",
+						shadowOffset: { width: 5, height: 5 },
+						shadowOpacity: 0.4
+					}}
+					onPress={() => this.logInFB()}
+				>
+					<Icon
+						name="facebook-square"
+						size={30}
+						color="white"
+						style={{ paddingRight: 15 }}
+					/>
+					<View>
+						<Text style={styles.text}>SE CONNECTER AVEC </Text>
+						<Text style={styles.text}>FACEBOOK </Text>
+					</View>
+				</TouchableOpacity>
+				<TouchableOpacity
+					onPress={() => navigate("LogIn", { name: "Connexion" })}
+					style={{
+						...styles.conexion,
+						backgroundColor: "white",
+						borderColor: "#ddd",
+						shadowColor: "#000000",
+						shadowOffset: { width: 5, height: 5 },
+						shadowOpacity: 0.4
+					}}
+				>
+					<Text style={styles.text}>SE CONNECTER VIA</Text>
+					<Text style={styles.text}>EMAIL</Text>
+				</TouchableOpacity>
+				<TouchableOpacity
+					onPress={() => navigate("SignUp", { name: "Nouveau compte" })}
+					style={{
+						...styles.conexion,
+						backgroundColor: "white",
+						height: 40,
+						borderColor: "#ddd",
+						shadowColor: "#000000",
+						shadowOffset: { width: 5, height: 5 },
+						shadowOpacity: 0.4
+					}}
+				>
+					<Text style={styles.text}>CRÉER UN COMPTE</Text>
+				</TouchableOpacity>
+			</BackGroundImage>
 		);
 	}
 }
