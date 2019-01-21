@@ -14,11 +14,15 @@ import ReglagesScreen from "../screens/Reglages/Reglages";
 import BankAccountScreen from "../screens/Reglages/Bank";
 import ContactUsScreen from "../screens/Reglages/Contact";
 import IbanFormScreen from "../screens/Reglages/IbanForm";
+
+import TypeForm from "../screens/Annonces/TypeForm";
+
 import Certification from "../screens/Reglages/Certification";
 import FAQ from "../screens/Reglages/FAQ";
 import NewPassword from "../screens/Reglages/NewPassword";
 import IconEntypo from "react-native-vector-icons/Entypo";
 import Colors from "../constants/Colors";
+
 
 const Annonces = createStackNavigator({
 	Annonces: {
@@ -43,6 +47,15 @@ Annonces.navigationOptions = {
 		inactiveTintColor: "#ACB9CC"
 	},
 	tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={"home"} />
+};
+
+TypeForm.navigationOptions = {
+  tabBarLabel: "Sondage",
+  tabBarOptions: {
+    activeTintColor: "#041A39",
+    inactiveTintColor: "#ACB9CC"
+  },
+  tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={"home"} />
 };
 
 const Profil = createStackNavigator({

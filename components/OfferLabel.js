@@ -14,6 +14,7 @@ import IonIcon from "react-native-vector-icons/Ionicons";
 
 // Créer le composant
 class OfferLabel extends React.Component {
+
 	state = {
 		pageName: "MesOffres"
 	};
@@ -117,6 +118,7 @@ class OfferLabel extends React.Component {
 			</View>
 		);
 	}
+
 }
 
 // Exporter le composant
@@ -124,6 +126,7 @@ export default OfferLabel;
 
 // Styles
 var styles = StyleSheet.create({
+
 	PrincipalContainer: {
 		flexDirection: "column",
 		backgroundColor: "white",
@@ -235,4 +238,5 @@ var styles = StyleSheet.create({
 		marginTop: 3,
 		color: "#567294"
 	}
+
 });
