@@ -39,7 +39,7 @@ const Annonces = createStackNavigator({
 Annonces.navigationOptions = {
 	tabBarLabel: "Annonces",
 	tabBarOptions: {
-		activeTintColor: "#041A39",
+		activeTintColor: "#B2025A",
 		inactiveTintColor: "#ACB9CC"
 	},
 	tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={"home"} />
@@ -64,7 +64,7 @@ const Profil = createStackNavigator({
 Profil.navigationOptions = {
 	tabBarLabel: "Profil",
 	tabBarOptions: {
-		activeTintColor: "#041A39",
+		activeTintColor: "#B2025A",
 		inactiveTintColor: "#ACB9CC"
 	},
 	tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={"user"} />
@@ -77,7 +77,7 @@ const MesOffres = createStackNavigator({
 MesOffres.navigationOptions = {
 	tabBarLabel: "Mes offres",
 	tabBarOptions: {
-		activeTintColor: "#041A39",
+		activeTintColor: "#B2025A",
 		inactiveTintColor: "#ACB9CC"
 	},
 	tabBarIcon: ({ focused }) => (
@@ -98,7 +98,7 @@ const SettingsStack = createStackNavigator({
 SettingsStack.navigationOptions = {
 	tabBarLabel: "Plus",
 	tabBarOptions: {
-		activeTintColor: "#041A39",
+		activeTintColor: "#B2025A",
 		inactiveTintColor: "#ACB9CC"
 	},
 	tabBarIcon: ({ focused }) => {
@@ -116,6 +116,5 @@ SettingsStack.navigationOptions = {
 export default createBottomTabNavigator({
 	Annonces,
 	MesOffres,
-	Profil,
 	SettingsStack
 });

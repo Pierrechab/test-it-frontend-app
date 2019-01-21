@@ -6,7 +6,7 @@ class BackGroundImage extends React.Component {
 			<ImageBackground
 				style={{ width: "100%", height: "100%" }}
 				imageStyle={{ opacity: 0.4 }}
-				source={require("../assets/images/fond-ecran-test-it.jpg")}
+				source={require("../assets/images/ScreenIphone.jpg")}
 			>
 				{this.props.children}
 			</ImageBackground>

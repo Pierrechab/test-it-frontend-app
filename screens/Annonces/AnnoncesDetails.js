@@ -460,9 +460,7 @@ class Offer extends React.Component {
 						});
 					// Vérifier les favoris
 					axios
-						.get(
-							"http://localhost:3000/checkfavorites/" + this.state.user_id
-						)
+						.get("http://localhost:3000/checkfavorites/" + this.state.user_id)
 						.then(response => {
 							this.setState(
 								{

@@ -27,11 +27,13 @@ class TopOfferCard extends React.Component {
 				>
 					<ImageBackground
 						source={{ uri: this.props.picture }}
-						style={{ height: 180, width: 240, marginRight: 10 }}
+						style={{
+							height: 180,
+							width: 240,
+							marginRight: 10
+						}}
 						resizeMode="stretch"
-					>
-						<Text>This is the TopOfferCard component</Text>
-					</ImageBackground>
+					/>
 				</TouchableOpacity>
 			</View>
 		);
@@ -42,7 +44,13 @@ const styles = StyleSheet.create({
 	container: {
 		flex: 1,
 		alignItems: "center",
-		justifyContent: "center"
+		justifyContent: "center",
+		borderWidth: 4,
+		borderColor: "black",
+		borderRadius: 10,
+		shadowOffset: { width: 5, height: 5 },
+		shadowColor: "gray",
+		shadowOpacity: 0.3
 	}
 });
 

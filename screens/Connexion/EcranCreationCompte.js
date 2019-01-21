@@ -6,7 +6,8 @@ import {
 	Text,
 	TouchableOpacity,
 	TextInput,
-	Platform
+	Platform,
+	ScrollView
 } from "react-native";
 import Icono from "react-native-vector-icons/FontAwesome";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
@@ -61,91 +62,93 @@ export default class SignUpScreen extends React.Component {
 	// };
 	render() {
 		return (
-			<KeyboardAwareScrollView
-				enabledOnAndroid={true}
-				// enableAutoAutomaticScroll={Platform.OS === "ios"}
-				style={{
-					display: "flex",
-					// backgroundColor: "#FF5054"
-					// justifyContent: "center",
-					// alignItems: "center",
-					flex: 1
-				}}
-				extraScrollHeight={80}
-				resetScrollToCoords={{ x: 0, y: 0 }}
-				contentContainerStyle={{
-					// backgroundColor: "#FF5054",
-					justifyContent: "center",
-					alignItems: "center",
-					flex: 1
-				}}
-				scrollEnabled
-			>
-				<Image
+			<ScrollView>
+				<KeyboardAwareScrollView
+					enabledOnAndroid={true}
+					// enableAutoAutomaticScroll={Platform.OS === "ios"}
 					style={{
-						height: 160,
-						width: 160,
-						alignSelf: "center",
-						marginTop: 30,
-						marginRight: 30
+						display: "flex",
+						// backgroundColor: "#FF5054"
+						// justifyContent: "center",
+						// alignItems: "center",
+						flex: 1
 					}}
-					source={require("../../assets/images/testit-logo.png")}
-				/>
-				<TextInput
-					style={{
-						fontSize: 20,
-						color: "black",
-						height: 50,
-						width: 200,
-						marginTop: 30,
-						borderBottomWidth: 1,
-						borderBottomColor: "rgb(103,114,129)",
-						paddingBottom: 5
-					}}
-					placeholder="email" //arno@airbnb-api.com
-					placeholderTextColor="lightgrey"
-					type="text"
-					autoCapitalize="none"
-					name="email"
-					value={this.state.email}
-					onChangeText={email => this.setState({ email })}
-				/>
-				<TextInput
-					style={{
-						fontSize: 20,
-						color: "black",
-						height: 50,
-						width: 200,
-						marginTop: 30,
-						borderBottomWidth: 1,
-						borderBottomColor: "rgb(103,114,129)",
-						paddingBottom: 5
-					}}
-					placeholder="........"
-					placeholderTextColor="lightgrey"
-					secureTextEntry
-					type="text"
-					name="password"
-					value={this.state.password}
-					onChangeText={text => this.setState({ password: text })}
-				/>
-				{/* {this.state.hasCheckedEmail  && this.renderIconEmail()} */}
-				<TouchableOpacity
-					style={{
-						height: 40,
-						width: 190,
-						borderRadius: 20,
-						backgroundColor: "white",
-						alignItems: "center",
+					extraScrollHeight={80}
+					resetScrollToCoords={{ x: 0, y: 0 }}
+					contentContainerStyle={{
+						// backgroundColor: "#FF5054",
 						justifyContent: "center",
-						marginTop: 50,
-						alignSelf: "center"
+						alignItems: "center",
+						flex: 1
 					}}
-					onPress={this.handleSubmit}
+					scrollEnabled
 				>
-					<Text>CRÉER MON COMPTE</Text>
-				</TouchableOpacity>
-			</KeyboardAwareScrollView>
+					<Image
+						style={{
+							height: 160,
+							width: 160,
+							alignSelf: "center",
+							marginTop: 30,
+							marginRight: 30
+						}}
+						source={require("../../assets/images/testit-logo.png")}
+					/>
+					<TextInput
+						style={{
+							fontSize: 20,
+							color: "black",
+							height: 50,
+							width: 200,
+							marginTop: 30,
+							borderBottomWidth: 1,
+							borderBottomColor: "rgb(103,114,129)",
+							paddingBottom: 5
+						}}
+						placeholder="email" //arno@airbnb-api.com
+						placeholderTextColor="lightgrey"
+						type="text"
+						autoCapitalize="none"
+						name="email"
+						value={this.state.email}
+						onChangeText={email => this.setState({ email })}
+					/>
+					<TextInput
+						style={{
+							fontSize: 20,
+							color: "black",
+							height: 50,
+							width: 200,
+							marginTop: 30,
+							borderBottomWidth: 1,
+							borderBottomColor: "rgb(103,114,129)",
+							paddingBottom: 5
+						}}
+						placeholder="........"
+						placeholderTextColor="lightgrey"
+						secureTextEntry
+						type="text"
+						name="password"
+						value={this.state.password}
+						onChangeText={text => this.setState({ password: text })}
+					/>
+					{/* {this.state.hasCheckedEmail  && this.renderIconEmail()} */}
+					<TouchableOpacity
+						style={{
+							height: 40,
+							width: 190,
+							borderRadius: 20,
+							backgroundColor: "white",
+							alignItems: "center",
+							justifyContent: "center",
+							marginTop: 50,
+							alignSelf: "center"
+						}}
+						onPress={this.handleSubmit}
+					>
+						<Text>CRÉER MON COMPTE</Text>
+					</TouchableOpacity>
+				</KeyboardAwareScrollView>
+			</ScrollView>
 		);
 	}
 }

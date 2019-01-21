@@ -167,172 +167,174 @@ export default class StatingProfileScreen extends React.Component {
 		//   this.props.navigation.state.params)
 
 		return (
-			<KeyboardAwareScrollView
-				enabledOnAndroid
-				style={{
-					display: "flex",
-					// backgroundColor: "#FF5054"
-					// justifyContent: "center",
-					// alignItems: "center",
-					flex: 1
-				}}
-				extraScrollHeight={80}
-				resetScrollToCoords={{ x: 0, y: 0 }}
-				contentContainerStyle={{
-					// backgroundColor: "#FF5054",
-					justifyContent: "center",
-					alignItems: "center",
-					flex: 1
-				}}
-				scrollEnabled
-			>
-				<View>
-					{this.renderPicture()}
-					<View
-						style={{
-							flexDirection: "row",
-							paddingTop: 50
-						}}
-					>
-						<TouchableOpacity
-							onPress={this._pickImage}
-							style={[
-								// styles.bgWhite,
-								// styles.padding10,
-								// styles.margin10,
-								customStyles.w50,
-								{ borderRadius: 5 }
-							]}
-						>
-							<Entypo
-								name="images"
-								size={32}
-								color="#1d262a"
-								// style={styles.textCenter}
-							/>
-							<Text /* style={[styles.textCenter, styles.blackColor]} */>
-								Choisir une photo
-							</Text>
-						</TouchableOpacity>
-
-						<TouchableOpacity
-							onPress={() => {
-								this.setState({
-									showCamera: true
-								});
-							}}
-							style={[
-								// styles.bgWhite,
-								// styles.padding10,
-								// styles.margin10,
-								customStyles.w50,
-								{ borderRadius: 5 }
-							]}
-						>
-							<Entypo
-								name="camera"
-								size={32}
-								color="#1d262a"
-								// style={styles.textCenter}
-							/>
-
-							<Text /* style={[styles.textCenter, styles.blackColor]} */>
-								Prendre une photo
-							</Text>
-						</TouchableOpacity>
-					</View>
-
-					<View
-						style={{
-							marginLeft: 20,
-							marginRight: 20,
-							marginTop: 30,
-							flex: 1,
-							backgroundColor: "rgb( 239,239,244)"
-						}}
-					>
-						<Text>Prénom</Text>
-						<TextInput
-							style={{
-								fontSize: 20,
-								color: "black",
-								height: 35,
-								backgroundColor: "white",
-								marginTop: 10,
-								paddingLeft: 6,
-								fontSize: 15,
-								borderWidth: 1,
-								borderColor: "rgb(103,114,129)",
-								paddingBottom: 5
-							}}
-							type="text"
-							name="firstName"
-							value={this.state.firstName}
-							onChangeText={firstName => this.setState({ firstName })}
-						/>
-						<Text style={{ marginTop: 10 }}>Nom</Text>
-						<TextInput
-							style={{
-								fontSize: 20,
-								backgroundColor: "white",
-								color: "black",
-								height: 35,
-								fontSize: 15,
-								paddingLeft: 6,
-								marginTop: 10,
-								borderWidth: 1,
-								borderColor: "rgb(103,114,129)",
-								paddingBottom: 5
-							}}
-							type="text"
-							name="lastName"
-							value={this.state.lastName}
-							onChangeText={lastName => this.setState({ lastName })}
-						/>
-						<Text style={{ marginTop: 20 }}>Date de naissance</Text>
-
-						<View
-							style={{
-								height: 35,
-								backgroundColor: "white",
-								marginTop: 10,
-								borderWidth: 1,
-								borderColor: "rgb(103,114,129)",
-								justifyContent: "center",
-								alignItems: "center"
-							}}
-						>
-							<DateTimePickerTester
-								changeDate={birthDate => {
-									this.setState({ birthDate });
-								}}
-								birthDate={this.state.birthDate}
-							/>
-						</View>
-						<Text style={{ marginTop: 10 }}>Sexe</Text>
+			<ScrollView>
+				<KeyboardAwareScrollView
+					enabledOnAndroid
+					style={{
+						display: "flex",
+						// backgroundColor: "#FF5054"
+						// justifyContent: "center",
+						// alignItems: "center",
+						flex: 1
+					}}
+					extraScrollHeight={80}
+					resetScrollToCoords={{ x: 0, y: 0 }}
+					contentContainerStyle={{
+						// backgroundColor: "#FF5054",
+						justifyContent: "center",
+						alignItems: "center",
+						flex: 1
+					}}
+					scrollEnabled
+				>
+					<View>
+						{this.renderPicture()}
 						<View
 							style={{
 								flexDirection: "row",
-								justifyContent: "space-evenly",
-								marginTop: 10
+								paddingTop: 50
 							}}
 						>
-							<ButtonSex
-								type="Homme"
-								selected={this.state.sex === "homme" ? true : false}
-								onPress={() => this.setState({ sex: "homme" })}
-							/>
-							<ButtonSex
-								type="Femme"
-								selected={this.state.sex === "femme" ? true : false}
-								onPress={() => this.setState({ sex: "femme" })}
-							/>
+							<TouchableOpacity
+								onPress={this._pickImage}
+								style={[
+									// styles.bgWhite,
+									// styles.padding10,
+									// styles.margin10,
+									customStyles.w50,
+									{ borderRadius: 5 }
+								]}
+							>
+								<Entypo
+									name="images"
+									size={32}
+									color="#1d262a"
+									// style={styles.textCenter}
+								/>
+								<Text /* style={[styles.textCenter, styles.blackColor]} */>
+									Choisir une photo
+								</Text>
+							</TouchableOpacity>
+
+							<TouchableOpacity
+								onPress={() => {
+									this.setState({
+										showCamera: true
+									});
+								}}
+								style={[
+									// styles.bgWhite,
+									// styles.padding10,
+									// styles.margin10,
+									customStyles.w50,
+									{ borderRadius: 5 }
+								]}
+							>
+								<Entypo
+									name="camera"
+									size={32}
+									color="#1d262a"
+									// style={styles.textCenter}
+								/>
+
+								<Text /* style={[styles.textCenter, styles.blackColor]} */>
+									Prendre une photo
+								</Text>
+							</TouchableOpacity>
 						</View>
 
-						{this.renderIcon()}
+						<View
+							style={{
+								marginLeft: 20,
+								marginRight: 20,
+								marginTop: 30,
+								flex: 1,
+								backgroundColor: "rgb( 239,239,244)"
+							}}
+						>
+							<Text>Prénom</Text>
+							<TextInput
+								style={{
+									fontSize: 20,
+									color: "black",
+									height: 35,
+									backgroundColor: "white",
+									marginTop: 10,
+									paddingLeft: 6,
+									fontSize: 15,
+									borderWidth: 1,
+									borderColor: "rgb(103,114,129)",
+									paddingBottom: 5
+								}}
+								type="text"
+								name="firstName"
+								value={this.state.firstName}
+								onChangeText={firstName => this.setState({ firstName })}
+							/>
+							<Text style={{ marginTop: 10 }}>Nom</Text>
+							<TextInput
+								style={{
+									fontSize: 20,
+									backgroundColor: "white",
+									color: "black",
+									height: 35,
+									fontSize: 15,
+									paddingLeft: 6,
+									marginTop: 10,
+									borderWidth: 1,
+									borderColor: "rgb(103,114,129)",
+									paddingBottom: 5
+								}}
+								type="text"
+								name="lastName"
+								value={this.state.lastName}
+								onChangeText={lastName => this.setState({ lastName })}
+							/>
+							<Text style={{ marginTop: 20 }}>Date de naissance</Text>
+
+							<View
+								style={{
+									height: 35,
+									backgroundColor: "white",
+									marginTop: 10,
+									borderWidth: 1,
+									borderColor: "rgb(103,114,129)",
+									justifyContent: "center",
+									alignItems: "center"
+								}}
+							>
+								<DateTimePickerTester
+									changeDate={birthDate => {
+										this.setState({ birthDate });
+									}}
+									birthDate={this.state.birthDate}
+								/>
+							</View>
+							<Text style={{ marginTop: 10 }}>Sexe</Text>
+							<View
+								style={{
+									flexDirection: "row",
+									justifyContent: "space-evenly",
+									marginTop: 10
+								}}
+							>
+								<ButtonSex
+									type="Homme"
+									selected={this.state.sex === "homme" ? true : false}
+									onPress={() => this.setState({ sex: "homme" })}
+								/>
+								<ButtonSex
+									type="Femme"
+									selected={this.state.sex === "femme" ? true : false}
+									onPress={() => this.setState({ sex: "femme" })}
+								/>
+							</View>
+
+							{this.renderIcon()}
+						</View>
 					</View>
-				</View>
-			</KeyboardAwareScrollView>
+				</KeyboardAwareScrollView>
+			</ScrollView>
 		);
 	}
 }
