@@ -1,140 +1,154 @@
 import React from "react";
 import axios from "axios";
 import {
-  KeyboardAvoidingView,
-  Image,
-  Text,
-  TouchableOpacity,
-  TextInput
+	KeyboardAvoidingView,
+	Image,
+	Text,
+	TouchableOpacity,
+	TextInput,
+	Platform,
+	ScrollView
 } from "react-native";
 import Icono from "react-native-vector-icons/FontAwesome";
+import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 // pierre@msn.com
 //  pierre
 
 export default class SignUpScreen extends React.Component {
-  static navigationOptions = {
-    title: "Inscription",
-    headerStyle: {
-      backgroundColor: "rgb(239,239,244)"
-    }
-    //header: null //pour enlever le header
-  };
+	static navigationOptions = {
+		title: "Inscription",
+		headerStyle: {
+			backgroundColor: "rgb(239,239,244)"
+		}
+		//header: null //pour enlever le header
+	};
 
-  state = {
-    email: "jo@msn.com",
-    password: "jo"
-    //hasCheckedEmail: false
-  };
+	state = {
+		email: "jo@msn.com",
+		password: "jo"
+		//hasCheckedEmail: false
+	};
 
-  handleSubmit = () => {
-    const { navigate } = this.props.navigation;
+	handleSubmit = () => {
+		const { navigate } = this.props.navigation;
 
-    axios
-      .post("http://localhost:3000/sign_up", {
-        email: this.state.email,
-        password: this.state.password
-      })
-      .then(response => {
-        if (response) {
-          navigate("StartingProfile", { _id: response.data._id });
-          //J'envoie l'Id sur l'écran startingProfile
-        }
-      })
-      .catch(err => {
-        console.log("erreur", err);
-        alert("Email déjà utilisé. Veuillez donner un email valable.");
-      });
-  };
+		axios
+			.post("http://localhost:3000/sign_up", {
+				email: this.state.email,
+				password: this.state.password
+			})
+			.then(response => {
+				if (response) {
+					navigate("StartingProfile", { _id: response.data._id });
+					//J'envoie l'Id sur l'écran startingProfile
+				}
+			})
+			.catch(err => {
+				console.log("erreur", err);
+				alert("Email déjà utilisé. Veuillez donner un email valable.");
+			});
+	};
 
-  // renderIconEmail = () => {
-  //   axios
-  //     .post("http://localhost:3000/freeemail", {
-  //       hasCheckedEmail: this.state.hasCheckedEmail
-  //     })
-  //     .then(response => {
-  //       if (response) {
-  //         return <Icono name="check-circle" size={30} color="green" />;
-  //       }
-  //     });
-  // };
-  render() {
-    return (
-      <KeyboardAvoidingView
-        behavior="padding"
-        enabled
-        style={{
-          backgroundColor: "rgb(239,239,244)",
-          alignItems: "center",
-
-          flex: 1,
-          justifyContent: "center"
-        }}
-      >
-        <Image
-          style={{
-            height: 160,
-            width: 160,
-            alignSelf: "center",
-            marginTop: 30,
-            marginRight: 30
-          }}
-          source={require("../../assets/images/testit-logo.png")}
-        />
-        <TextInput
-          style={{
-            fontSize: 20,
-            color: "black",
-            height: 50,
-            width: 200,
-            marginTop: 30,
-            borderBottomWidth: 1,
-            borderBottomColor: "rgb(103,114,129)",
-            paddingBottom: 5
-          }}
-          placeholder="email" //arno@airbnb-api.com
-          placeholderTextColor="lightgrey"
-          type="text"
-          autoCapitalize="none"
-          name="email"
-          value={this.state.email}
-          onChangeText={email => this.setState({ email })}
-        />
-        <TextInput
-          style={{
-            fontSize: 20,
-            color: "black",
-            height: 50,
-            width: 200,
-            marginTop: 30,
-            borderBottomWidth: 1,
-            borderBottomColor: "rgb(103,114,129)",
-            paddingBottom: 5
-          }}
-          placeholder="........"
-          placeholderTextColor="lightgrey"
-          secureTextEntry
-          type="text"
-          name="password"
-          value={this.state.password}
-          onChangeText={text => this.setState({ password: text })}
-        />
-        {/* {this.state.hasCheckedEmail  && this.renderIconEmail()} */}
-        <TouchableOpacity
-          style={{
-            height: 40,
-            width: 190,
-            borderRadius: 20,
-            backgroundColor: "white",
-            alignItems: "center",
-            justifyContent: "center",
-            marginTop: 50,
-            alignSelf: "center"
-          }}
-          onPress={this.handleSubmit}
-        >
-          <Text>CRÉER MON COMPTE</Text>
-        </TouchableOpacity>
-      </KeyboardAvoidingView>
-    );
-  }
+	// renderIconEmail = () => {
+	//   axios
+	//     .post("http://localhost:3000/freeemail", {
+	//       hasCheckedEmail: this.state.hasCheckedEmail
+	//     })
+	//     .then(response => {
+	//       if (response) {
+	//         return <Icono name="check-circle" size={30} color="green" />;
+	//       }
+	//     });
+	// };
+	render() {
+		return (
+			<ScrollView>
+				<KeyboardAwareScrollView
+					enabledOnAndroid={true}
+					// enableAutoAutomaticScroll={Platform.OS === "ios"}
+					style={{
+						display: "flex",
+						// backgroundColor: "#FF5054"
+						// justifyContent: "center",
+						// alignItems: "center",
+						flex: 1
+					}}
+					extraScrollHeight={80}
+					resetScrollToCoords={{ x: 0, y: 0 }}
+					contentContainerStyle={{
+						// backgroundColor: "#FF5054",
+						justifyContent: "center",
+						alignItems: "center",
+						flex: 1
+					}}
+					scrollEnabled
+				>
+					<Image
+						style={{
+							height: 160,
+							width: 160,
+							alignSelf: "center",
+							marginTop: 30,
+							marginRight: 30
+						}}
+						source={require("../../assets/images/testit-logo.png")}
+					/>
+					<TextInput
+						style={{
+							fontSize: 20,
+							color: "black",
+							height: 50,
+							width: 200,
+							marginTop: 30,
+							borderBottomWidth: 1,
+							borderBottomColor: "rgb(103,114,129)",
+							paddingBottom: 5
+						}}
+						placeholder="email" //arno@airbnb-api.com
+						placeholderTextColor="lightgrey"
+						type="text"
+						autoCapitalize="none"
+						name="email"
+						value={this.state.email}
+						onChangeText={email => this.setState({ email })}
+					/>
+					<TextInput
+						style={{
+							fontSize: 20,
+							color: "black",
+							height: 50,
+							width: 200,
+							marginTop: 30,
+							borderBottomWidth: 1,
+							borderBottomColor: "rgb(103,114,129)",
+							paddingBottom: 5
+						}}
+						placeholder="........"
+						placeholderTextColor="lightgrey"
+						secureTextEntry
+						type="text"
+						name="password"
+						value={this.state.password}
+						onChangeText={text => this.setState({ password: text })}
+					/>
+					{/* {this.state.hasCheckedEmail  && this.renderIconEmail()} */}
+					<TouchableOpacity
+						style={{
+							height: 40,
+							width: 190,
+							borderRadius: 20,
+							backgroundColor: "white",
+							alignItems: "center",
+							justifyContent: "center",
+							marginTop: 50,
+							alignSelf: "center"
+						}}
+						onPress={this.handleSubmit}
+					>
+						<Text>CRÉER MON COMPTE</Text>
+					</TouchableOpacity>
+				</KeyboardAwareScrollView>
+			</ScrollView>
+		);
+	}
 }

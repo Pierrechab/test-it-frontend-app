@@ -7,6 +7,7 @@ import { Share } from "react-native";
 import { BackHandler } from "react-native";
 import { LinearGradient } from "expo";
 import {
+
   Image,
   ImageBackground,
   View,
@@ -756,6 +757,7 @@ const styles = StyleSheet.create({
   end: {
     height: 50
   }
+
 });
 
 export default Offer;

@@ -3,16 +3,17 @@ import React from "react";
 import IonIcon from "react-native-vector-icons/Ionicons";
 import MapView from "react-native-maps";
 import {
-  View,
-  Text,
-  Image,
-  ImageBackground,
-  TouchableOpacity,
-  StyleSheet
+	View,
+	Text,
+	Image,
+	ImageBackground,
+	TouchableOpacity,
+	StyleSheet
 } from "react-native";
 
 // Créer la page
 class GPS extends React.Component {
+
   render() {
     return (
       <View>
@@ -65,6 +66,7 @@ class GPS extends React.Component {
       </View>
     );
   }
+
 }
 
 // Exporter le module
@@ -72,6 +74,7 @@ export default GPS;
 
 // Styles
 const styles = StyleSheet.create({
+
   BoutonContainer: {
     backgroundColor: "#EFEFF4",
     paddingTop: 33,
@@ -136,4 +139,5 @@ const styles = StyleSheet.create({
     paddingTop: 3,
     color: "#567294"
   }
+
 });
