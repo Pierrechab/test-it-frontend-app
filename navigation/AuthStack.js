@@ -7,12 +7,19 @@ import TransitionScreen from "../screens/Connexion/EcranTransition";
 import ForgotPasswordScreen from "../screens/Connexion/ForgotPassword";
 
 const App = createStackNavigator({
-  FirstMain: { screen: FirstMainScreen },
-  SignUp: { screen: SignUpScreen },
-  LogIn: { screen: LogInScreen },
-  StartingProfile: { screen: StartingProfileScreen },
-  Transition: { screen: TransitionScreen },
-  ForgotPassword: { screen: ForgotPasswordScreen }
+	FirstMain: { screen: FirstMainScreen },
+	SignUp: {
+		screen: SignUpScreen,
+		navigationOptions: () => ({
+			headerBackTitle: null
+		})
+	},
+	LogIn: {
+		screen: LogInScreen
+	},
+	StartingProfile: { screen: StartingProfileScreen },
+	Transition: { screen: TransitionScreen },
+	ForgotPassword: { screen: ForgotPasswordScreen }
 });
 
 export default App;

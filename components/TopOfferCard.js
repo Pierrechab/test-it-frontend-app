@@ -28,8 +28,8 @@ class TopOfferCard extends React.Component {
 					<ImageBackground
 						source={{ uri: this.props.picture }}
 						style={{
-							height: 180,
-							width: 240,
+							// height: 180,
+							// width: 240,
 							marginRight: 10
 						}}
 						resizeMode="stretch"

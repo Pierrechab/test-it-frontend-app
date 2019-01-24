@@ -8,7 +8,8 @@ import {
 	TextInput,
 	Image,
 	StyleSheet,
-	ScrollView
+	ScrollView,
+	Dimensions
 } from "react-native";
 import Icono from "react-native-vector-icons/FontAwesome";
 import DateTimePickerTester from "../../components/DateTimePickerTester";
@@ -16,13 +17,20 @@ import ButtonSex from "../../components/ButtonSex";
 import { ImagePicker, Camera, Permissions } from "expo";
 import { Entypo } from "@expo/vector-icons";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
+import BackGroundImage from "../../components/BackGroundImage";
 
 export default class StatingProfileScreen extends React.Component {
 	static navigationOptions = {
 		title: "Profil ",
 		headerStyle: {
-			backgroundColor: "rgb(239,239,244)"
-		}
+			backgroundColor: "#F5F5F5"
+		},
+		headerTintColor: "#041A39",
+		headerTitleStyle: {
+			fontWeight: "bold",
+			fontSize: 22
+		},
+		headerLeft: null
 		//header: null //pour enlever le header
 	};
 	// L'Id est déjà transmis par la birthDate d'avant, pas besoin de le mettre dans les state
@@ -75,7 +83,7 @@ export default class StatingProfileScreen extends React.Component {
 
 		if (showCamera === true) {
 			return (
-				<View>
+				<View style={{ justifyContent: "center", alignItems: "center" }}>
 					<View style={customStyles.viewCamera}>
 						<Camera
 							style={customStyles.camera}
@@ -116,21 +124,83 @@ export default class StatingProfileScreen extends React.Component {
 			(this.state.birthDate !== "")
 		) {
 			return (
-				<TouchableOpacity
-					style={{
-						height: 60,
-						width: 60,
-						marginLeft: 200,
-						marginTop: 100,
-						borderRadius: 60,
-						backgroundColor: "rgb(171,36,100)",
-						justifyContent: "center",
-						alignItems: "center"
-					}}
-					onPress={this.handleSubmit}
-				>
-					<Icono name="chevron-right" size={30} color="white" />
-				</TouchableOpacity>
+				<View>
+					<TouchableOpacity
+						style={{
+							width: 170,
+							height: 40,
+							marginTop: 30,
+							borderRadius: 60,
+							backgroundColor: "#B2025A",
+							justifyContent: "center",
+							alignItems: "center"
+						}}
+						onPress={this.handleSubmit}
+					>
+						<View
+							style={{
+								display: "flex",
+								flexDirection: "row",
+								justifyContent: "center",
+								alignItems: "center"
+							}}
+						>
+							<Text
+								style={{
+									color: "white",
+									fontWeight: "bold",
+									flex: 4,
+									textAlign: "center"
+								}}
+							>
+								CONTINUER
+							</Text>
+							<View style={{ flex: 1 }}>
+								<Icono name="chevron-right" size={25} color="white" />
+							</View>
+						</View>
+					</TouchableOpacity>
+				</View>
+			);
+		} else {
+			return (
+				<View>
+					<TouchableOpacity
+						style={{
+							width: 170,
+							height: 40,
+							marginTop: 30,
+							borderRadius: 60,
+							backgroundColor: "white",
+							justifyContent: "center",
+							alignItems: "center"
+						}}
+						onPress={this.handleSubmit}
+					>
+						<View
+							style={{
+								display: "flex",
+								flexDirection: "row",
+								justifyContent: "center",
+								alignItems: "center"
+							}}
+						>
+							<Text
+								style={{
+									color: "#041A39",
+									fontWeight: "bold",
+									flex: 4,
+									textAlign: "center"
+								}}
+							>
+								CONTINUER
+							</Text>
+							<View style={{ flex: 1 }}>
+								<Icono name="chevron-right" size={25} color="#041A39" />
+							</View>
+						</View>
+					</TouchableOpacity>
+				</View>
 			);
 		}
 	};
@@ -139,7 +209,7 @@ export default class StatingProfileScreen extends React.Component {
 		const { navigate } = this.props.navigation;
 		const { firstName, lastName, sex, birthDate } = this.state;
 		axios
-			.post("http://localhost:3000/user/update", {
+			.post("http://192.168.86.23:3000/user/update", {
 				_id: this.props.navigation.state.params,
 				firstName,
 				lastName,
@@ -167,7 +237,7 @@ export default class StatingProfileScreen extends React.Component {
 		//   this.props.navigation.state.params)
 
 		return (
-			<ScrollView>
+			<BackGroundImage style={{ flex: 1, width: "100%" }}>
 				<KeyboardAwareScrollView
 					enabledOnAndroid
 					style={{
@@ -181,39 +251,43 @@ export default class StatingProfileScreen extends React.Component {
 					resetScrollToCoords={{ x: 0, y: 0 }}
 					contentContainerStyle={{
 						// backgroundColor: "#FF5054",
-						justifyContent: "center",
+						justifyContent: "space-between",
 						alignItems: "center",
-						flex: 1
+						flex: 1,
+						marginTop: 30,
+						marginBottom: 100
 					}}
 					scrollEnabled
 				>
-					<View>
+					<View
+						style={{
+							display: "flex",
+							// marginTop: 35,
+							justifyContent: "center",
+							alignItems: "center"
+						}}
+					>
 						{this.renderPicture()}
 						<View
 							style={{
 								flexDirection: "row",
-								paddingTop: 50
+								paddingTop: 10
 							}}
 						>
 							<TouchableOpacity
 								onPress={this._pickImage}
 								style={[
-									// styles.bgWhite,
-									// styles.padding10,
-									// styles.margin10,
 									customStyles.w50,
-									{ borderRadius: 5 }
+									{ borderRadius: 5, display: "flex", alignItems: "center" }
 								]}
 							>
 								<Entypo
 									name="images"
 									size={32}
-									color="#1d262a"
+									color="#041A39"
 									// style={styles.textCenter}
 								/>
-								<Text /* style={[styles.textCenter, styles.blackColor]} */>
-									Choisir une photo
-								</Text>
+								<Text style={{ color: "#041A39" }}>Choisir une photo</Text>
 							</TouchableOpacity>
 
 							<TouchableOpacity
@@ -227,126 +301,170 @@ export default class StatingProfileScreen extends React.Component {
 									// styles.padding10,
 									// styles.margin10,
 									customStyles.w50,
-									{ borderRadius: 5 }
+									{ borderRadius: 5, display: "flex", alignItems: "center" }
 								]}
 							>
 								<Entypo
 									name="camera"
 									size={32}
-									color="#1d262a"
+									color="#041A39"
 									// style={styles.textCenter}
 								/>
 
-								<Text /* style={[styles.textCenter, styles.blackColor]} */>
-									Prendre une photo
-								</Text>
+								<Text style={{ color: "#041A39" }}>Prendre une photo</Text>
 							</TouchableOpacity>
 						</View>
-
+					</View>
+					<View
+						style={{
+							display: "flex",
+							marginTop: 30,
+							justifyContent: "center"
+						}}
+					>
 						<View
 							style={{
-								marginLeft: 20,
-								marginRight: 20,
-								marginTop: 30,
-								flex: 1,
-								backgroundColor: "rgb( 239,239,244)"
+								display: "flex",
+								flexDirection: "row",
+								// justifyContent: "center",
+								alignItems: "center"
 							}}
 						>
-							<Text>Prénom</Text>
+							<Text
+								style={{
+									color: "#041A39",
+									fontSize: 15,
+									flex: 1,
+									marginRight: 10
+								}}
+							>
+								Prénom :
+							</Text>
 							<TextInput
 								style={{
-									fontSize: 20,
-									color: "black",
-									height: 35,
-									backgroundColor: "white",
-									marginTop: 10,
-									paddingLeft: 6,
 									fontSize: 15,
-									borderWidth: 1,
-									borderColor: "rgb(103,114,129)",
-									paddingBottom: 5
+									color: "#041A39",
+									height: 35,
+									padding: 6,
+									borderBottomWidth: 1,
+									borderColor: "#041A39",
+									flex: 3,
+									textAlign: "center",
+									fontStyle: "italic"
 								}}
+								placeholder="Marc"
+								placeholderTextColor="#041A39"
 								type="text"
 								name="firstName"
 								value={this.state.firstName}
 								onChangeText={firstName => this.setState({ firstName })}
 							/>
-							<Text style={{ marginTop: 10 }}>Nom</Text>
+						</View>
+						<View
+							style={{
+								display: "flex",
+								flexDirection: "row",
+								// justifyContent: "center",
+								alignItems: "center",
+								marginTop: 20
+							}}
+						>
+							<Text style={{ marginTop: 10, flex: 1, marginRight: 10 }}>
+								Nom :
+							</Text>
 							<TextInput
 								style={{
-									fontSize: 20,
-									backgroundColor: "white",
-									color: "black",
-									height: 35,
 									fontSize: 15,
-									paddingLeft: 6,
-									marginTop: 10,
-									borderWidth: 1,
-									borderColor: "rgb(103,114,129)",
-									paddingBottom: 5
+									color: "#041A39",
+									height: 35,
+									padding: 6,
+									borderBottomWidth: 1,
+									borderColor: "#041A39",
+									flex: 3,
+									textAlign: "center",
+									fontStyle: "italic"
 								}}
+								placeholder="Dupond"
+								placeholderTextColor="#041A39"
 								type="text"
 								name="lastName"
 								value={this.state.lastName}
 								onChangeText={lastName => this.setState({ lastName })}
 							/>
-							<Text style={{ marginTop: 20 }}>Date de naissance</Text>
-
-							<View
-								style={{
-									height: 35,
-									backgroundColor: "white",
-									marginTop: 10,
-									borderWidth: 1,
-									borderColor: "rgb(103,114,129)",
-									justifyContent: "center",
-									alignItems: "center"
+						</View>
+						<View
+							style={{
+								display: "flex",
+								height: 40,
+								width: 300,
+								backgroundColor: "white",
+								marginTop: 40,
+								justifyContent: "center",
+								alignItems: "center",
+								borderRadius: 18,
+								shadowColor: "#000000",
+								shadowOffset: { width: 5, height: 5 },
+								shadowOpacity: 0.4
+							}}
+						>
+							<DateTimePickerTester
+								changeDate={birthDate => {
+									this.setState({ birthDate });
 								}}
-							>
-								<DateTimePickerTester
-									changeDate={birthDate => {
-										this.setState({ birthDate });
-									}}
-									birthDate={this.state.birthDate}
-								/>
-							</View>
-							<Text style={{ marginTop: 10 }}>Sexe</Text>
-							<View
-								style={{
-									flexDirection: "row",
-									justifyContent: "space-evenly",
-									marginTop: 10
-								}}
-							>
-								<ButtonSex
-									type="Homme"
-									selected={this.state.sex === "homme" ? true : false}
-									onPress={() => this.setState({ sex: "homme" })}
-								/>
-								<ButtonSex
-									type="Femme"
-									selected={this.state.sex === "femme" ? true : false}
-									onPress={() => this.setState({ sex: "femme" })}
-								/>
-							</View>
-
+								birthDate={this.state.birthDate}
+							/>
+						</View>
+						<Text
+							style={{
+								marginTop: 15,
+								textAlign: "center",
+								color: "#041A39",
+								fontSize: 18
+							}}
+						>
+							Vous êtes :
+						</Text>
+						<View
+							style={{
+								flexDirection: "row",
+								justifyContent: "space-evenly"
+							}}
+						>
+							<ButtonSex
+								type="Un homme"
+								selected={this.state.sex === "homme" ? true : false}
+								onPress={() => this.setState({ sex: "homme" })}
+							/>
+							<ButtonSex
+								type="Une femme"
+								selected={this.state.sex === "femme" ? true : false}
+								onPress={() => this.setState({ sex: "femme" })}
+							/>
+						</View>
+						<View
+							style={{
+								display: "flex",
+								justifyContent: "center",
+								alignItems: "center"
+							}}
+						>
 							{this.renderIcon()}
 						</View>
 					</View>
 				</KeyboardAwareScrollView>
-			</ScrollView>
+			</BackGroundImage>
 		);
 	}
 }
 const customStyles = StyleSheet.create({
-	// w50: { width: Dimensions.get("window").width / 2 - 40 },
+	w50: { width: Dimensions.get("window").width / 2 - 40 },
 	snap: {
-		backgroundColor: "#1d262a",
+		backgroundColor: "#041A39",
 		width: 55,
 		height: 55,
 		borderRadius: 55,
-		borderColor: "#1d262a",
-		borderWidth: 5,
+		borderColor: "#FFF",
+		borderWidth: 3,
 		position: "absolute",
 		padding: 5,
 		top: 120,
@@ -364,11 +482,11 @@ const customStyles = StyleSheet.create({
 		height: 150,
 		borderRadius: 75,
 		borderColor: "#FFF",
-		borderWidth: 5,
-		backgroundColor: "#1d262a"
+		borderWidth: 3,
+		backgroundColor: "#041A39"
 	},
 	input: {
-		backgroundColor: "#FFF",
+		backgroundColor: "#041A39",
 		borderRadius: 3,
 		padding: 15,
 		// width: Dimensions.get("window").width - 60,
@@ -376,7 +494,7 @@ const customStyles = StyleSheet.create({
 		marginTop: 30
 	},
 	button: {
-		backgroundColor: "#1d262a",
+		backgroundColor: "#041A39",
 		paddingVertical: 15,
 		paddingHorizontal: 30,
 		borderRadius: 3,
@@ -389,7 +507,7 @@ const customStyles = StyleSheet.create({
 		borderRadius: 3,
 		margin: 10,
 		borderWidth: 1,
-		borderColor: "#1d262a"
+		borderColor: "#FFF"
 		// width: Dimensions.get("window").width - 60
 	}
 });

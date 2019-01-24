@@ -68,7 +68,7 @@ export default class FirstMainScreen extends React.Component {
 				const { navigate } = this.props.navigation;
 
 				axios
-					.post("http://localhost:3000/facebook/log_in", {
+					.post("http://192.168.86.23:3000/facebook/log_in", {
 						email: jsonResponse.email,
 						firstName: jsonResponse.name,
 						lastName: jsonResponse.name,
@@ -136,7 +136,9 @@ export default class FirstMainScreen extends React.Component {
 							fontSize: 20,
 							textAlign: "center",
 							fontWeight: "600",
-							padding: 10
+							padding: 10,
+							color: "#041A39",
+							fontStyle: "italic"
 						}}
 					>
 						Gagne de l'argent en donnant ton avis
@@ -145,11 +147,12 @@ export default class FirstMainScreen extends React.Component {
 						style={{
 							...styles.conexion,
 							flexDirection: "row",
-							marginTop: 80,
+							marginTop: 50,
 							borderColor: "#ddd",
-							shadowColor: "#000000",
-							shadowOffset: { width: 5, height: 5 },
-							shadowOpacity: 0.4
+							// shadowColor: "#000000",
+							// shadowOffset: { width: 5, height: 5 },
+							// shadowOpacity: 0.4,
+							height: 40
 						}}
 						onPress={() => this.logInFB()}
 					>
@@ -160,32 +163,43 @@ export default class FirstMainScreen extends React.Component {
 							style={{ paddingRight: 15 }}
 						/>
 						<View>
-							<Text style={styles.text}>SE CONNECTER AVEC </Text>
-							<Text style={styles.text}>FACEBOOK </Text>
+							<Text style={{ fontSize: 13, fontWeight: "700", color: "white" }}>
+								FACEBOOK CONNEXION
+							</Text>
 						</View>
 					</TouchableOpacity>
 					<TouchableOpacity
 						onPress={() => navigate("LogIn", { name: "Connexion" })}
 						style={{
 							...styles.conexion,
+							height: 40,
+							borderRadius: 20,
 							backgroundColor: "white",
-							borderColor: "#ddd",
-							shadowColor: "#000000",
+							alignItems: "center",
+							justifyContent: "center",
+							alignSelf: "center",
+							// borderColor: "#B2025A",
+							// borderWidth: 0.5,
+							shadowColor: "#041A39",
 							shadowOffset: { width: 5, height: 5 },
 							shadowOpacity: 0.4
 						}}
 					>
-						<Text style={styles.text}>SE CONNECTER VIA</Text>
-						<Text style={styles.text}>EMAIL</Text>
+						<Text style={styles.text}>SE CONNECTER</Text>
 					</TouchableOpacity>
 					<TouchableOpacity
 						onPress={() => navigate("SignUp", { name: "Nouveau compte" })}
 						style={{
 							...styles.conexion,
-							backgroundColor: "white",
 							height: 40,
-							borderColor: "#ddd",
-							shadowColor: "#000000",
+							borderRadius: 20,
+							backgroundColor: "white",
+							alignItems: "center",
+							justifyContent: "center",
+							alignSelf: "center",
+							// borderColor: "#B2025A",
+							// borderWidth: 0.5,
+							shadowColor: "#041A39",
 							shadowOffset: { width: 5, height: 5 },
 							shadowOpacity: 0.4
 						}}
@@ -201,7 +215,6 @@ export default class FirstMainScreen extends React.Component {
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
-
 		alignItems: "center",
 		justifyContent: "center"
 	},
@@ -220,6 +233,7 @@ const styles = StyleSheet.create({
 	},
 	text: {
 		fontSize: 13,
-		fontWeight: "700"
+		fontWeight: "700",
+		color: "#041A39"
 	}
 });

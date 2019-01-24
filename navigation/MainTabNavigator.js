@@ -23,18 +23,18 @@ import NewPassword from "../screens/Reglages/NewPassword";
 import IconEntypo from "react-native-vector-icons/Entypo";
 import Colors from "../constants/Colors";
 
-
 const Annonces = createStackNavigator({
 	Annonces: {
 		screen: AnnoncesScreen,
 		navigationOptions: {
 			headerStyle: {
-				backgroundColor: "#041A39"
+				backgroundColor: "#F5F5F5"
 			},
 			title: "Annonces",
 			headerTitleStyle: {
-				color: "white",
-				fontSize: 22
+				color: "#041A39",
+				fontSize: 22,
+				fontWeight: "bold"
 			}
 		}
 	}
@@ -50,12 +50,12 @@ Annonces.navigationOptions = {
 };
 
 TypeForm.navigationOptions = {
-  tabBarLabel: "Sondage",
-  tabBarOptions: {
-    activeTintColor: "#041A39",
-    inactiveTintColor: "#ACB9CC"
-  },
-  tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={"home"} />
+	tabBarLabel: "Sondage",
+	tabBarOptions: {
+		activeTintColor: "#041A39",
+		inactiveTintColor: "#ACB9CC"
+	},
+	tabBarIcon: ({ focused }) => <TabBarIcon focused={focused} name={"home"} />
 };
 
 const Profil = createStackNavigator({
@@ -63,11 +63,11 @@ const Profil = createStackNavigator({
 		screen: ProfilScreen,
 		navigationOptions: {
 			headerStyle: {
-				backgroundColor: "#041A39"
+				backgroundColor: "#F5F5F5"
 			},
 			title: "Mon profil",
 			headerTitleStyle: {
-				color: "white",
+				color: "#041A39",
 				fontSize: 22
 			}
 		}

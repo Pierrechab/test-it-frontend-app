@@ -19,7 +19,7 @@ import {
 class TypeForm extends React.Component {
   getToHistory = () => {
     axios
-      .post("http://localhost:3000/participation", {
+      .post("http://192.168.86.23:3000/participation", {
         Offer_id: this.props.navigation.state.params.id,
         User_id: this.props.navigation.state.params.user_id
       })
