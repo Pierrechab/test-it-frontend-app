@@ -320,7 +320,7 @@ class Offer extends React.Component {
 							<Text style={styles.labelShare}>Partager</Text>
 						</TouchableOpacity>
 					</View>
-					<View style={styles.end} />
+					{/* <View style={styles.end} /> */}
 				</ScrollView>
 				{/* REGISTER  -  REGISTER  -  REGISTER  -  REGISTER */}
 				{this.state.history === false ? (
@@ -773,10 +773,10 @@ const styles = StyleSheet.create({
 	WebView: {
 		height: 200,
 		width: "100%"
-	},
-	end: {
-		height: 50
 	}
+	// end: {
+	// 	height: 50
+	// }
 });
 
 export default Offer;

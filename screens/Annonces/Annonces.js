@@ -7,6 +7,7 @@ import {
 	AsyncStorage,
 	StyleSheet,
 	ImageBackground,
+	Image,
 	TextInput,
 	Dimensions
 } from "react-native";
@@ -123,20 +124,20 @@ export default class Annonces extends React.Component {
 						offers: response.data.offers
 						// dataTopFilter: response.data.offers
 					});
-					const dataTopFilter = [...this.state.dataTopFilter];
-					dataTopFilter.sort(function(a, b) {
-						return b.price - a.price;
-					});
-					if (dataTopFilter.length > 3) {
-						dataTopFilter.splice(3, dataTopFilter.length - 3);
-						this.setState({ dataTopFilter: dataTopFilter });
-					}
+					// const dataTopFilter = [...this.state.dataTopFilter];
+					// dataTopFilter.sort(function(a, b) {
+					// 	return b.price - a.price;
+					// });
+					// if (dataTopFilter.length > 3) {
+					// 	dataTopFilter.splice(3, dataTopFilter.length - 3);
+					// 	this.setState({ dataTopFilter: dataTopFilter });
+					// }
 				});
 		});
 	};
 
 	render() {
-		// console.log(this.state.offers[1]);
+		// console.log(this.state.dataTopFilter);
 		// if (this.state.offers.length !== 0) {
 		// 	console.log(this.state.offers[0].adress[0].city);
 		// }
@@ -276,7 +277,8 @@ export default class Annonces extends React.Component {
 												this.props.navigation.navigate("AnnoncesDetails", {
 													id: item._id,
 													pageName: this.state.pageName,
-													navigation: item.navigation
+													navigation: item.navigation,
+													routeName: this.props.navigation.state.routeName
 												});
 											}}
 											// style={{
@@ -288,22 +290,62 @@ export default class Annonces extends React.Component {
 										>
 											<View
 												style={{
-													backgroundColor: "white",
-													borderWidth: 0.5,
-													borderColor: "gray",
-													borderRadius: 10
+													// backgroundColor: "black",
+													// borderWidth: 0.5,
+													// borderColor: "gray",
+													borderRadius: 10,
+													height: 230,
+													width: 300,
+													shadowColor: "#000",
+													shadowOffset: { width: 0, height: 2 },
+													shadowOpacity: 0.8,
+													shadowRadius: 2,
+													elevation: 1,
+													marginBottom: 5
 												}}
 											>
-												<ImageBackground
-													source={{ uri: item.picture }}
-													imageStyle={{ borderRadius: 10 }}
+												<View
 													style={{
-														height: 200,
-														width: 300,
-														borderRadius: 10
+														height: 180,
+														borderTopLeftRadius: 10,
+														borderTopRightRadius: 10,
+														overflow: "hidden"
 													}}
-													resizeMode="stretch"
-												/>
+												>
+													<Image
+														source={{ uri: item.picture }}
+														style={{
+															height: 180,
+															width: 300
+														}}
+														resizeMode="stretch"
+													/>
+												</View>
+												<View
+													style={{
+														backgroundColor: "white",
+														// opacity: 0.95,
+														height: 50,
+														display: "flex",
+														justifyContent: "center",
+														alignItems: "center",
+														borderBottomLeftRadius: 10,
+														borderBottomRightRadius: 10
+													}}
+												>
+													<Text
+														style={{
+															fontSize: 14,
+															fontWeight: "bold",
+															color: "#041A39",
+															// color: "#567294",
+															width: 300,
+															textAlign: "center"
+														}}
+													>
+														{item.offerName}
+													</Text>
+												</View>
 											</View>
 										</TouchableOpacity>
 									</View>
