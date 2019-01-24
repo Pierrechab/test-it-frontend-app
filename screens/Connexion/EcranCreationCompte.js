@@ -44,7 +44,7 @@ export default class SignUpScreen extends React.Component {
 				alert("Mots de passe différents");
 			} else {
 				axios
-					.post("http://192.168.86.23:3000/sign_up", {
+					.post("http://localhost:3000/sign_up", {
 						email: this.state.email,
 						password: this.state.password
 					})
@@ -67,7 +67,7 @@ export default class SignUpScreen extends React.Component {
 	};
 	// renderIconEmail = () => {
 	//   axios
-	//     .post("http://192.168.86.23:3000/freeemail", {
+	//     .post("http://localhost:3000/freeemail", {
 	//       hasCheckedEmail: this.state.hasCheckedEmail
 	//     })
 	//     .then(response => {

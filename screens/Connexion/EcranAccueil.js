@@ -68,7 +68,7 @@ export default class FirstMainScreen extends React.Component {
 				const { navigate } = this.props.navigation;
 
 				axios
-					.post("http://192.168.86.23:3000/facebook/log_in", {
+					.post("http://localhost:3000/facebook/log_in", {
 						email: jsonResponse.email,
 						firstName: jsonResponse.name,
 						lastName: jsonResponse.name,

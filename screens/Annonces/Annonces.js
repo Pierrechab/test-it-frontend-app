@@ -92,9 +92,9 @@ export default class Annonces extends React.Component {
 			const age = today.getFullYear() - birthDate.getFullYear();
 			axios
 				.get(
-					// pour pouvoir se connecter avec son telephone portable il faut mettre l'adresse ip a la place de 192.168.86.23:3000:
+					// pour pouvoir se connecter avec son telephone portable il faut mettre l'adresse ip a la place de localhost:3000:
 					//"http://192.168.86.60:3000/home/with-count?age=" +
-					"http://192.168.86.23:3000/home/with-count?age=" +
+					"http://localhost:3000/home/with-count?age=" +
 						age +
 						"&genderTarget=" +
 						userInformation.account.sex,
@@ -1438,9 +1438,9 @@ export default class Annonces extends React.Component {
 			const age = today.getFullYear() - birthDate.getFullYear();
 			axios
 				.get(
-					// pour pouvoir se connecter avec son telephone portable il faut mettre l'adresse ip a la place de 192.168.86.23:3000:
+					// pour pouvoir se connecter avec son telephone portable il faut mettre l'adresse ip a la place de localhost:3000:
 					//"http://192.168.86.60:3000/home/with-count?age=" +
-					"http://192.168.86.23:3000/home/with-count?age=" +
+					"http://localhost:3000/home/with-count?age=" +
 						age +
 						"&genderTarget=" +
 						userInformation.account.sex,
@@ -1478,7 +1478,7 @@ export default class Annonces extends React.Component {
 					}
 				});
 		});
-		axios.get("http://192.168.86.23:3000/get_category").then(response => {
+		axios.get("http://localhost:3000/get_category").then(response => {
 			this.setState({
 				categories: response.data
 			});

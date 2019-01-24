@@ -83,7 +83,7 @@ export default class LogIn extends React.Component {
 			alert("Email invalide");
 		} else {
 			axios
-				.post("http://192.168.86.23:3000/log_in", {
+				.post("http://localhost:3000/log_in", {
 					tokenNotifications: this.state.tokenNotifications,
 					email: this.state.email,
 					password: this.state.password
