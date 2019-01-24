@@ -140,31 +140,31 @@ export default class Annonces extends React.Component {
 		// if (this.state.offers.length !== 0) {
 		// 	console.log(this.state.offers[0].adress[0].city);
 		// }
-		const dataTop = [];
-		if (this.state.dataTopFilter) {
-			for (let i = 0; i < this.state.dataTopFilter.length; i++) {
-				dataTop.push(
-					<TopOfferCard
-						key={this.state.dataTopFilter[i]._id}
-						id={this.state.dataTopFilter[i]._id}
-						title={this.state.dataTopFilter[i].offerName}
-						picture={this.state.dataTopFilter[i].picture}
-						availabilities={this.state.dataTopFilter[i].availabilities}
-						price={this.state.dataTopFilter[i].price}
-						typeOffer={this.state.dataTopFilter[i].typeOffer}
-						duration={this.state.dataTopFilter[i].duration}
-						picture={this.state.dataTopFilter[i].picture}
-						companyName={
-							this.state.dataTopFilter[i].company.companyAccount.companyName
-						}
-						logoCompany={
-							this.state.dataTopFilter[i].company.companyAccount.companyLogo[0]
-						}
-						navigation={this.props.navigation}
-					/>
-				);
-			}
-		}
+		// const dataTop = [];
+		// if (this.state.dataTopFilter) {
+		// 	for (let i = 0; i < this.state.dataTopFilter.length; i++) {
+		// 		dataTop.push(
+		// 			<TopOfferCard
+		// 				key={this.state.dataTopFilter[i]._id}
+		// 				id={this.state.dataTopFilter[i]._id}
+		// 				title={this.state.dataTopFilter[i].offerName}
+		// 				picture={this.state.dataTopFilter[i].picture}
+		// 				availabilities={this.state.dataTopFilter[i].availabilities}
+		// 				price={this.state.dataTopFilter[i].price}
+		// 				typeOffer={this.state.dataTopFilter[i].typeOffer}
+		// 				duration={this.state.dataTopFilter[i].duration}
+		// 				picture={this.state.dataTopFilter[i].picture}
+		// 				companyName={
+		// 					this.state.dataTopFilter[i].company.companyAccount.companyName
+		// 				}
+		// 				logoCompany={
+		// 					this.state.dataTopFilter[i].company.companyAccount.companyLogo[0]
+		// 				}
+		// 				navigation={this.props.navigation}
+		// 			/>
+		// 		);
+		// 	}
+		// }
 
 		const listOffers = [];
 		if (this.state.offers) {
@@ -1472,8 +1472,8 @@ export default class Annonces extends React.Component {
 					dataTopFilter.sort(function(a, b) {
 						return b.price - a.price;
 					});
-					if (dataTopFilter.length > 3) {
-						dataTopFilter.splice(3, dataTopFilter.length - 3);
+					if (dataTopFilter.length > 5) {
+						dataTopFilter.splice(5, dataTopFilter.length - 5);
 						this.setState({ dataTopFilter: dataTopFilter });
 					}
 				});

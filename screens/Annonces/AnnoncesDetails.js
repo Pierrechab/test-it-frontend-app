@@ -247,16 +247,16 @@ class Offer extends React.Component {
 							<MapView
 								style={styles.MapView}
 								region={{
-									latitude: this.state.latitude,
-									longitude: this.state.longitude,
+									latitude: Number(this.state.latitude),
+									longitude: Number(this.state.longitude),
 									latitudeDelta: 0.0922,
 									longitudeDelta: 0.0421
 								}}
 							>
 								<MapView.Marker
 									coordinate={{
-										latitude: this.state.latitude,
-										longitude: this.state.longitude
+										latitude: Number(this.state.latitude),
+										longitude: Number(this.state.longitude)
 									}}
 								/>
 								{/* <LinearGradient
@@ -457,9 +457,7 @@ class Offer extends React.Component {
 						});
 					// Vérifier les favoris
 					axios
-						.get(
-							"http://localhost:3000/checkfavorites/" + this.state.user_id
-						)
+						.get("http://localhost:3000/checkfavorites/" + this.state.user_id)
 						.then(response => {
 							this.setState(
 								{
@@ -589,7 +587,8 @@ const styles = StyleSheet.create({
 	},
 	paragraphe: {
 		marginLeft: 15,
-		marginRight: 15
+		marginRight: 15,
+		textAlign: "justify"
 	},
 	separationLine: {
 		width: "100%",

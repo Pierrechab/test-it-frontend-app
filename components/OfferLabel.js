@@ -71,7 +71,7 @@ class OfferLabel extends React.Component {
 									/>
 								) : (
 									<ImageBackground
-										resizeMode="contain"
+										resizeMode="stretch"
 										style={styles.Image2}
 										source={{
 											uri: this.props.logoCompany
@@ -80,7 +80,7 @@ class OfferLabel extends React.Component {
 								)
 							) : (
 								<ImageBackground
-									resizeMode="contain"
+									resizeMode="stretch"
 									style={styles.Image2}
 									source={{
 										uri: this.props.picture
@@ -172,10 +172,10 @@ var styles = StyleSheet.create({
 	SecondContainer: {
 		display: "flex",
 		flexDirection: "row",
-		height: 120,
+		height: 110,
 		borderBottomWidth: 0.5,
 		borderColor: "#d6d7da",
-		marginLeft: 15,
+		// marginLeft: 15,
 		marginRight: 15
 		// borderBottomLeftRadius: 10,
 		// borderBottomRightRadius: 10
@@ -184,8 +184,7 @@ var styles = StyleSheet.create({
 		flex: 2,
 		justifyContent: "center",
 		alignItems: "center",
-		width: 190,
-		padding: 5
+		width: 170
 	},
 	LogoOfferContainer: {
 		justifyContent: "center",
@@ -197,7 +196,7 @@ var styles = StyleSheet.create({
 		color: "#567294"
 	},
 	Image2: {
-		width: 150,
+		width: 170,
 		height: 110
 	},
 	NameCompany: {
