@@ -27,7 +27,8 @@ class HistoryLabel extends React.Component {
 						this.props.navigation.navigate("AnnoncesDetails", {
 							id: this.props.id,
 							pageName: this.state.pageName,
-							navigation: this.props.navigation
+							navigation: this.props.navigation,
+							routeName: this.props.navigation.state.routeName
 						});
 					}}
 				>
@@ -49,7 +50,7 @@ class HistoryLabel extends React.Component {
 								{this.props.companyName + " : " + this.props.title}
 							</Text>
 							<Text style={styles.OfferSubTitle} numberOfLines={1}>
-								Date de participation : 14/12/2018
+								Date de participation : 25/01/2019
 							</Text>
 							<Text style={styles.OfferSubTitle} numberOfLines={1}>
 								Statut : En cours de validation
@@ -84,7 +85,7 @@ var styles = StyleSheet.create({
 		// shadowOpacity: 0.3
 	},
 	FirstContainer: {
-		borderRadius: 10,
+		// borderRadius: 10,
 		flexDirection: "row",
 		alignItems: "center",
 		height: 85,

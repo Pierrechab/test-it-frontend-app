@@ -21,7 +21,7 @@ class NewPassword extends React.Component {
 			const id = userInformation._id;
 			console.log(userInformation);
 			axios
-				.post("http://localhost:3000/newPassword", {
+				.post("http://192.168.86.249:3000/newPassword", {
 					id: id,
 					oldPassword: this.state.password,
 					newPassword: this.state.newPassword

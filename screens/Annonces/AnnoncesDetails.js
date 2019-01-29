@@ -46,7 +46,7 @@ class Offer extends React.Component {
 	};
 	register = () => {
 		axios
-			.post("http://localhost:3000/addRemoveTester", {
+			.post("http://192.168.86.249:3000/addRemoveTester", {
 				Offer_id: this.props.navigation.state.params.id,
 				User_id: this.state.user_id
 			})
@@ -65,7 +65,7 @@ class Offer extends React.Component {
 			return AlertIOS.alert("", "Vous vous êtes déjà inscrit à cette offre.");
 		}
 		axios
-			.post("http://localhost:3000/addToFavorite", {
+			.post("http://192.168.86.249:3000/addToFavorite", {
 				Offer_id: this.props.navigation.state.params.id,
 				User_id: this.state.user_id
 			})
@@ -185,7 +185,7 @@ class Offer extends React.Component {
 								{moment(this.state.offer.deadlineTest).format("DD-MM-YYYY")}
 							</Text>
 						</View>
-						{this.state.offer.typeOffer === "Sondage" ? (
+						{this.state.offer.typeOffer === "Online" ? (
 							<View style={styles.ArrayContainerN1}>
 								<IonIcon name="ios-phone-portrait" style={styles.icones} />
 								<Text style={styles.OfferSecondTitle}>Sondage</Text>
@@ -223,7 +223,7 @@ class Offer extends React.Component {
 					{/* Ligne de séparation */}
 					<View style={styles.separationLine} />
 					{/* =================== */}
-					{this.state.offer.typeOffer === "Sondage" ? (
+					{this.state.offer.typeOffer === "Online" ? (
 						// SI PAS DE LATITUDE NE PAS AFFICHER LA MAP
 						<View />
 					) : (
@@ -340,7 +340,7 @@ class Offer extends React.Component {
 								style={styles.registerButtonOn}
 								onPress={() => {
 									// Cas des sondages internet
-									if (this.state.offer.typeOffer === "Sondage") {
+									if (this.state.offer.typeOffer === "Online") {
 										return AlertIOS.prompt(
 											"Sondage " + this.state.companyName,
 											"Participer immédiatement ?",
@@ -355,7 +355,9 @@ class Offer extends React.Component {
 															companyName: this.state.companyName,
 															pageName: this.props.navigation.state.params.pageName.toString(),
 															navigation: this.props.navigation,
-															typeForm: this.state.offer.typeForm
+															typeForm: this.state.offer.typeForm,
+															routeName: this.props.navigation.state.params
+																.routeName
 														});
 													}
 												},
@@ -374,7 +376,7 @@ class Offer extends React.Component {
 									}
 								}}
 							>
-								{this.state.offer.typeOffer === "Sondage" ? (
+								{this.state.offer.typeOffer === "Online" ? (
 									<Text style={styles.textButton}>PARTICIPER</Text>
 								) : (
 									<Text style={styles.textButton}>S’INSCRIRE</Text>
@@ -414,7 +416,7 @@ class Offer extends React.Component {
 					// Charger l'annonce et vérifier l'inscription de l'user
 					axios
 						.get(
-							"http://localhost:3000/offer/" +
+							"http://192.168.86.249:3000/offer/" +
 								this.props.navigation.state.params.id
 						)
 						.then(response => {
@@ -457,7 +459,9 @@ class Offer extends React.Component {
 						});
 					// Vérifier les favoris
 					axios
-						.get("http://localhost:3000/checkfavorites/" + this.state.user_id)
+						.get(
+							"http://192.168.86.249:3000/checkfavorites/" + this.state.user_id
+						)
 						.then(response => {
 							this.setState(
 								{
@@ -478,7 +482,9 @@ class Offer extends React.Component {
 						});
 					// Vérifier l'historique
 					axios
-						.get("http://localhost:3000/checkhistory/" + this.state.user_id)
+						.get(
+							"http://192.168.86.249:3000/checkhistory/" + this.state.user_id
+						)
 						.then(response => {
 							this.setState(
 								{

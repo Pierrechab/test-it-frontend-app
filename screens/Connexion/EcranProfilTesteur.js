@@ -209,7 +209,7 @@ export default class StatingProfileScreen extends React.Component {
 		const { navigate } = this.props.navigation;
 		const { firstName, lastName, sex, birthDate } = this.state;
 		axios
-			.post("http://localhost:3000/user/update", {
+			.post("http://192.168.86.249:3000/user/update", {
 				_id: this.props.navigation.state.params,
 				firstName,
 				lastName,

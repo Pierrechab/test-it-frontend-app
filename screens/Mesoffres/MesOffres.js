@@ -39,7 +39,7 @@ export default class MesOffres extends React.Component {
 	getDatas = () => {
 		axios
 			.get(
-				"http://localhost:3000/" +
+				"http://192.168.86.249:3000/" +
 					this.state.OfferType +
 					"/" +
 					this.state.user_id
@@ -69,7 +69,7 @@ export default class MesOffres extends React.Component {
 	getHistory = () => {
 		axios
 			.get(
-				"http://localhost:3000/" +
+				"http://192.168.86.249:3000/" +
 					this.state.OfferType +
 					"/" +
 					this.state.user_id
@@ -318,7 +318,7 @@ export default class MesOffres extends React.Component {
 							</View>
 							<View style={styles.gainContainerBasDroit}>
 								<Text style={styles.detailGain3}>
-									Cumul vos gains depuis le 12/12/2018
+									Cumul total de vos gains depuis inscription
 								</Text>
 								<Text style={styles.gainsN4}>{this.state.gains} €</Text>
 							</View>
@@ -486,6 +486,7 @@ var styles = StyleSheet.create({
 		paddingBottom: 7
 	},
 	soldeSubTitle: {
+		fontStyle: "italic",
 		fontSize: 11.5,
 		color: "#041A39"
 	},
@@ -537,10 +538,10 @@ var styles = StyleSheet.create({
 		borderWidth: 0.5,
 		borderColor: "#d6d7da",
 		borderRadius: 10,
-		borderColor: "#CCCCCC",
-		shadowOffset: { width: 5, height: 5 },
-		shadowColor: "gray",
-		shadowOpacity: 1.0
+		borderColor: "#CCCCCC"
+		// shadowOffset: { width: 5, height: 5 },
+		// shadowColor: "gray",
+		// shadowOpacity: 1.0
 	},
 	icon1: {
 		fontSize: 20,
@@ -589,7 +590,7 @@ var styles = StyleSheet.create({
 	gainsN5: {
 		fontSize: 17,
 		fontWeight: "bold",
-		color: "#B2025A",
+		color: "#041A39",
 		paddingTop: 25
 	},
 	bouttonPaiement: {
@@ -597,7 +598,7 @@ var styles = StyleSheet.create({
 		alignItems: "center",
 		width: "95%",
 		height: 45,
-		borderRadius: 10,
+		borderRadius: 20,
 		backgroundColor: "#B2025A",
 		marginTop: 15
 	},
